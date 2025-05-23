@@ -10,7 +10,10 @@ def convert_frame_to_sample(input_txt, output_txt, frame_shift=160):
             fout.write(f"{start_sample}, {end_sample}\n")
 
 if __name__ == "__main__":
-    input_path = "output/data_3_vad.txt"      # ← 你的模型输出路径
-    output_path = "output/data_3_samples.txt" # ← 转换后的文件路径
-    convert_frame_to_sample(input_path, output_path)
-    print(f"✅ 转换完成：{output_path}")
+    files = [("output/data_1_vad.txt", "output/data_1_samples.txt"),
+             ("output/data_2_vad.txt", "output/data_2_samples.txt"),
+             ("output/data_3_vad.txt", "output/data_3_samples.txt")]
+
+    for input_path, output_path in files:
+        convert_frame_to_sample(input_path, output_path)
+        print(f"✅ 转换完成：{output_path}")
